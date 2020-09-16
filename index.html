@@ -148,26 +148,53 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="all-All pair shortest path problem" class="article article-type-all  article-index" itemscope itemprop="blogPost">
+    <article id="post-多起点最短路问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/16/All%20pair%20shortest%20path%20problem/">problem</a>
+      <a class="article-title" href="/2020/09/16/%E5%A4%9A%E8%B5%B7%E7%82%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/">多起点最短路问题</a>
     </h1>
   
 
         
-        <a href="/2020/09/16/All%20pair%20shortest%20path%20problem/" class="archive-article-date">
-  	<time datetime="2020-09-16T15:44:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-16</time>
+        <a href="/2020/09/16/%E5%A4%9A%E8%B5%B7%E7%82%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-09-16T15:47:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
+        <h4 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h4><p>最短路问题一直是算法中的的一个重要问题，恐怕没有一本算法书不会介绍这个问题。这个问题及其变体在计算机网络中有着重要的应用。对于单起点最短路问题，比较经典的算法有Dijkstra’s Algorithm和Bellman-Ford 算法，前者是一个贪心算法，后者是一个动态规划算法。考虑一个图$G=(V,E)$ , 其中$|V|=n,|E|=m$。两个算法的一些对比如下表所示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>时间复杂度</th>
+<th>是否允许负权重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dijkstra’s Algorithm</td>
+<td>O（mn）加上heap 结构O（m logn)</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>Bellman-Ford Algorithm</td>
+<td>O(mn)</td>
+<td>允许</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>有了以上的信息，对于以上多起点的问题，可以考虑在每个节点运行一次上述算法，时间复杂度变为原来的n倍。对于Dijkstra’s Algorithm ，其时间复杂度此时为O（mnlogn)，但无法解决带有负权重的图。对于Bellman-Ford Algorithm，其时间复杂度为$O(mn^2)$ 。考虑到我们的图一般没有孤立的点，此时m&gt;n。一个好的算法设计者拿到一个算法时，总是要想到，我们能做的更好吗？ 答案是可以的。有一个既可以处理带有负权重边的图，又可以不像这样简单的跑n次Bellman-Ford Algorithm带来那么高的时间复杂度的算法。下面我们介绍Floyd-Warshall 算法，该算法时间复杂度为$O(n^3)$.</p>
+        
+          <a class="article-more-a" href="/2020/09/16/%E5%A4%9A%E8%B5%B7%E7%82%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/#more">more >></a>
         
       
 
@@ -176,11 +203,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/16/All%20pair%20shortest%20path%20problem/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/09/16/%E5%A4%9A%E8%B5%B7%E7%82%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 
@@ -540,6 +578,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
