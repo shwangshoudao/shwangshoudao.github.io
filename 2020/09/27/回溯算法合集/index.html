@@ -7,21 +7,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>回溯算法合集 | Stay Live</title>
+  <title>回溯算法合集1 | Stay Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上海财经大学本科15级，复旦大学硕士19级">
+  <meta name="description" content="本次总结来自leetcode的回溯问题的一部分，做一个小的短期合集，题目分别是leetcode 401题，面试题08.07，面试题08.04，面试题08.09。都是回溯算法问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="回溯算法合集">
+<meta property="og:title" content="回溯算法合集1">
 <meta property="og:url" content="http://example.com/2020/09/27/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/index.html">
 <meta property="og:site_name" content="Stay Live">
-<meta property="og:description" content="上海财经大学本科15级，复旦大学硕士19级">
+<meta property="og:description" content="本次总结来自leetcode的回溯问题的一部分，做一个小的短期合集，题目分别是leetcode 401题，面试题08.07，面试题08.04，面试题08.09。都是回溯算法问题。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2020/09/27/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/回溯算法合集/Binary_clock_samui_moon.jpg">
 <meta property="article:published_time" content="2020-09-27T13:55:26.000Z">
-<meta property="article:modified_time" content="2020-09-27T13:57:53.754Z">
+<meta property="article:modified_time" content="2020-09-27T14:55:57.641Z">
 <meta property="article:author" content="Shoudao">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/09/27/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E5%90%88%E9%9B%86/回溯算法合集/Binary_clock_samui_moon.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Stay Live" type="application/atom+xml">
   
@@ -165,7 +167,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      回溯算法合集
+      回溯算法合集1
     </h1>
   
 
@@ -178,7 +180,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>本次总结来自leetcode的回溯问题的一部分，做一个小的短期合集，题目分别是leetcode 401题，面试题08.07，面试题08.04，面试题08.09。都是回溯算法问题。</p>
+<a id="more"></a>
+<h3 id="leetcode-401-二进制手表"><a href="#leetcode-401-二进制手表" class="headerlink" title="leetcode 401 二进制手表"></a>leetcode 401 二进制手表</h3><p>二进制手表顶部有 4 个 LED 代表 <strong>小时（0-11）</strong>，底部的 6 个 LED 代表 <strong>分钟（0-59）</strong>。</p>
+<p>每个 LED 代表一个 0 或 1，最低位在右侧。</p>
+<p><img src="回溯算法合集/Binary_clock_samui_moon.jpg" alt="img" style="zoom: 25%;" /></p>
+<p>例如，上面的二进制手表读取 “3:25”。</p>
+<p>给定一个非负整数 <em>n</em> 代表当前 LED 亮着的数量，返回所有可能的时间。</p>
+<p><strong>示例</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: n &#x3D; 1</span><br><span class="line">返回: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;, &quot;0:01&quot;, &quot;0:02&quot;, &quot;0:04&quot;, &quot;0:08&quot;, &quot;0:16&quot;, &quot;0:32&quot;]</span><br></pre></td></tr></table></figure>
+<p>解决此问题一开始没想到好的办法，主要是两边有混的，而且在每一边可分配的亮灯数不确定，因此有点麻烦，看到一个解答感觉很好，利用一个元素为0，1长度为10的列表，记录下某个灯是否亮，然后用回溯的方法，将n个1分配到这10个位置。然后将这这个记录状态的向量对应位置与分钟和时间对应的值做点乘即可得到分钟和时间的值。代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">readBinaryWatch</span>(<span class="params">self, num</span>):</span></span><br><span class="line">            <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">            num : 还剩下的可点亮的灯的数量</span></span><br><span class="line"><span class="string">            index: 是当前选择点亮哪一个灯</span></span><br><span class="line"><span class="string">            status: 记录是哪些位置的灯被点亮了</span></span><br><span class="line"><span class="string">            </span></span><br><span class="line"><span class="string">            &quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">if</span> num&lt;<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        res = []</span><br><span class="line">        hours = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">8</span>]</span><br><span class="line">        minutes = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">16</span>,<span class="number">32</span>]</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span>(<span class="params">num,idx,status</span>):</span></span><br><span class="line">            <span class="keyword">if</span> num == <span class="number">0</span>: <span class="comment"># 没有可以点亮的灯了，记录当前结果，并返回</span></span><br><span class="line">                h = [i*j <span class="keyword">for</span> i,j <span class="keyword">in</span> zip(status[:<span class="number">4</span>],hours)]</span><br><span class="line">                m = [i*j <span class="keyword">for</span> i,j <span class="keyword">in</span> zip(status[<span class="number">4</span>:],minutes)]</span><br><span class="line">                <span class="keyword">if</span> h&lt;<span class="number">12</span> <span class="keyword">and</span> m&lt;<span class="number">60</span>:</span><br><span class="line">                    res.append(<span class="string">&quot;%d:%02d&quot;</span>%(h,m))</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(idx,<span class="number">10</span>):</span><br><span class="line">                status[i] = <span class="number">1</span>  <span class="comment"># 做出下一步的选择</span></span><br><span class="line">                backtrack(num<span class="number">-1</span>,idx+<span class="number">1</span>,status) <span class="comment"># 在剩下的灯里面去点亮num-1个灯</span></span><br><span class="line">                status[i] = <span class="number">0</span>  <span class="comment"># 返回到上一步选择时的状态    </span></span><br><span class="line">            backtrack(num,<span class="number">0</span>,[<span class="number">0</span>]*<span class="number">10</span>)</span><br><span class="line">            <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="面试题-08-07-无重复字符串的排列组合"><a href="#面试题-08-07-无重复字符串的排列组合" class="headerlink" title="面试题 08.07 无重复字符串的排列组合"></a>面试题 08.07 无重复字符串的排列组合</h3><p>无重复字符串的排列组合。编写一种方法，计算某字符串的所有排列组合，字符串每个字符均不相同。</p>
+<p><strong>示例1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：S &#x3D; &quot;qwe&quot;</span><br><span class="line">输出：[&quot;qwe&quot;, &quot;qew&quot;, &quot;wqe&quot;, &quot;weq&quot;, &quot;ewq&quot;, &quot;eqw&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong>示例2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：S &#x3D; &quot;ab&quot;</span><br><span class="line">输出：[&quot;ab&quot;, &quot;ba&quot;]</span><br></pre></td></tr></table></figure>
+
       
 
       
