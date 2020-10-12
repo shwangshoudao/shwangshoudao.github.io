@@ -7,21 +7,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>python的赋值引用、浅拷贝和深拷贝 | Stay Live</title>
+  <title>python中的@clasmethod和@staticmethod | Stay Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在刷leetcode时，碰到了链表中的一个问题，老是搞不太明白，因此网上查了一下，是有关python赋值、浅拷贝和深拷贝的，因此想写个文章总结一下。">
+  <meta name="description" content="主要参考这篇文章正确理解Python中的 @staticmethod@classmethod方法。简要说一下其中我觉得重要的部分。 1234567891011class A(object):    def m1(self, n):        print(&quot;self:&quot;, self)    @classmethod    def m2(cls, n):        prin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python的赋值引用、浅拷贝和深拷贝">
-<meta property="og:url" content="http://example.com/2020/10/04/python%E7%9A%84%E8%B5%8B%E5%80%BC%E5%BC%95%E7%94%A8%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/index.html">
+<meta property="og:title" content="python中的@clasmethod和@staticmethod">
+<meta property="og:url" content="http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/index.html">
 <meta property="og:site_name" content="Stay Live">
-<meta property="og:description" content="在刷leetcode时，碰到了链表中的一个问题，老是搞不太明白，因此网上查了一下，是有关python赋值、浅拷贝和深拷贝的，因此想写个文章总结一下。">
+<meta property="og:description" content="主要参考这篇文章正确理解Python中的 @staticmethod@classmethod方法。简要说一下其中我觉得重要的部分。 1234567891011class A(object):    def m1(self, n):        print(&quot;self:&quot;, self)    @classmethod    def m2(cls, n):        prin">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-10-04T05:15:35.000Z">
-<meta property="article:modified_time" content="2020-10-04T07:23:56.195Z">
+<meta property="og:image" content="http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/v2-f5960c8e540c96a30c2513655b6ae9a2_720w.jpg">
+<meta property="article:published_time" content="2020-10-12T13:50:27.000Z">
+<meta property="article:modified_time" content="2020-10-12T14:09:00.378Z">
 <meta property="article:author" content="Shoudao">
-<meta property="article:tag" content="leetcode">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/v2-f5960c8e540c96a30c2513655b6ae9a2_720w.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Stay Live" type="application/atom+xml">
   
@@ -158,107 +159,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python的赋值引用、浅拷贝和深拷贝" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-python中的-clasmethod和-staticmethod" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python的赋值引用、浅拷贝和深拷贝
+      python中的@clasmethod和@staticmethod
     </h1>
   
 
         
-        <a href="/2020/10/04/python%E7%9A%84%E8%B5%8B%E5%80%BC%E5%BC%95%E7%94%A8%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="archive-article-date">
-  	<time datetime="2020-10-04T05:15:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-04</time>
+        <a href="/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/" class="archive-article-date">
+  	<time datetime="2020-10-12T13:50:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在刷leetcode时，碰到了链表中的一个问题，老是搞不太明白，因此网上查了一下，是有关python赋值、浅拷贝和深拷贝的，因此想写个文章总结一下。</p>
-<a id="more"></a>
-<p>首先要了解几个概念</p>
-<ul>
-<li>变量：是一个系统表的元素，拥有指向对象的连接空间</li>
-<li>对象：被分配的一块内存，存储其所代表的值</li>
-<li>引用：是自动形成的从变量到对象的指针</li>
-<li>类型：属于对象，而非变量</li>
-<li>不可变对象：一旦创建就不可修改的对象，包括字符串、元组、数值类型</li>
-</ul>
-<p>（该对象所指向的内存中的值不能被改变。当改变某个变量时候，由于其所指的值不能被改变，相当于把原来的值复制一份后再改变，这会开辟一个新的地址，变量再指向这个新的地址。）</p>
-<ul>
-<li>可变对象：可以修改的对象，包括列表、字典、集合</li>
-</ul>
-<p>（该对象所指向的内存中的值可以被改变。变量（准确的说是引用）改变后，实际上是其所指的值直接发生改变，并没有发生复制行为，也没有开辟新的地址，通俗点说就是原地改变。）</p>
-<p>当我们写:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;python&quot;</span></span><br></pre></td></tr></table></figure>
-<p>Python解释器干的事情：</p>
-<ol>
-<li>创建变量a</li>
-<li>创建一个对象(分配一块内存)，来存储值 ‘python’</li>
-<li>将变量与对象，通过指针连接起来，从变量到对象的连接称之为引用(变量引用对象)</li>
-</ol>
-<p>当我们对类似字符串这样的不可变赋新值时（改变），其地址会发生改变</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">20</span>]: a = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">21</span>]: id(a)</span><br><span class="line">Out[<span class="number">21</span>]: <span class="number">140735294473280</span></span><br><span class="line">In [<span class="number">22</span>]: a = <span class="number">6</span></span><br><span class="line"> </span><br><span class="line">In [<span class="number">23</span>]: id(a)</span><br><span class="line">Out[<span class="number">23</span>]: <span class="number">140735294473312</span></span><br></pre></td></tr></table></figure>
-<p>但当我们对可变变量进行改变时，其地址不会改变，在原有地址上进行变化：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">28</span>]: a = [<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">29</span>]: id(a)</span><br><span class="line">Out[<span class="number">29</span>]: <span class="number">2155605869576</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">30</span>]: a.append(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">31</span>]: id(a)</span><br><span class="line">Out[<span class="number">31</span>]: <span class="number">2155605869576</span></span><br></pre></td></tr></table></figure>
-<p>下面我们分别讨论赋值、浅拷贝和深拷贝</p>
-<p><strong>1.赋值：只是复制了新对象的引用，不会开辟新的内存空间</strong></p>
-<p>并不会产生一个独立的对象单独存在，只是将原有的数据块打上一个新标签，所以当其中一个标签被改变的时候，数据块就会发生变化，另一个标签也会随之改变。</p>
-<p>下面分别就可变对象和不可变对象就这一性质进行展示。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: a = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">2</span>]: b = a</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: id(a)</span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">140735294473280</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: id(b)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="number">140735294473280</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: a = <span class="number">3</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: id(a)</span><br><span class="line">Out[<span class="number">6</span>]: <span class="number">140735294473216</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: id(b)</span><br><span class="line">Out[<span class="number">7</span>]: <span class="number">140735294473280</span></span><br></pre></td></tr></table></figure>
-<p>可以看到，对于不可变对象，进行变量的赋值，仍然时共用同一个地址，但是当我们对a进行改变时，此时a的地址会发生改变，而b相关联的地址不变，同时b也不会随着a的改变而改变，因为a时不可变对象，改变时不会改变原地址的值。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">8</span>]: a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: b = a</span><br><span class="line"></span><br><span class="line">In [<span class="number">10</span>]: id(a)</span><br><span class="line">Out[<span class="number">10</span>]: <span class="number">2214776157128</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: id(b)</span><br><span class="line">Out[<span class="number">11</span>]: <span class="number">2214776157128</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">12</span>]: a[<span class="number">0</span>] = <span class="number">5</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: a</span><br><span class="line">Out[<span class="number">13</span>]: [<span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: b</span><br><span class="line">Out[<span class="number">14</span>]: [<span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">15</span>]: id(a)</span><br><span class="line">Out[<span class="number">15</span>]: <span class="number">2214776157128</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">16</span>]: id(b)</span><br><span class="line">Out[<span class="number">16</span>]: <span class="number">2214776157128</span></span><br></pre></td></tr></table></figure>
-<p>对于可变对象，如上例中的列表，当改变其中的值时，正如前面所说的，其地址不变，相当于在原地址上做改变，由于b=a相当于把a的地址贴个b的标签，因此对a做改变时，b也会相应改变。（同理，对b改变时a也会改变）。</p>
-<p><strong>2.浅拷贝：创建新对象，其内容是原对象的引用</strong></p>
-<p>浅拷贝有三种形式： 切片操作，工厂函数，copy模块中的copy函数。</p>
-<p>如： lst = [1,2,[3,4]]</p>
-<p>切片操作：lst1 = lst[:] 或者 lst1 = [each for each in lst]</p>
-<p>工厂函数：lst1 = list(lst)</p>
-<p>copy函数：lst1 = copy.copy(lst)</p>
-<p>浅拷贝之所以称为浅拷贝，是它仅仅只拷贝了一层，拷贝了最外围的对象本身，内部的元素都只是拷贝了一个引用而已，在lst中有一个嵌套的list[3,4]，如果我们修改了它，情况就不一样了。</p>
-<p>浅复制要分两种情况进行讨论：</p>
-<p>浅复制要分两种情况进行讨论：</p>
-<p>1）当浅复制的值是不可变对象（字符串、元组、数值类型）时和“赋值”的情况一样，对象的id值*（id()函数用于获取对象的内存地址）*与浅复制原来的值相同。</p>
-<p>2）当浅复制的值是可变对象（列表、字典、集合）时会产生一个“不是那么独立的对象”存在。有两种情况：</p>
-<p><em>第一种情况：复制的对象中无复杂子对象，原来值的改变并不会影响浅复制的值，同时浅复制的值改变也并不会影响原来的值。原来值的id值与浅复制原来的值不同。</em></p>
-<p><em>第二种情况：复制的对象中有复杂子对象（例如列表中的一个子元素是一个列表），如果不改变其中复杂子对象，浅复制的值改变并不会影响原来的值。 但是改变原来的值中的复杂子对象的值会影响浅复制的值。</em></p>
-<p><strong>3.深拷贝：和浅拷贝对应，深拷贝拷贝了对象的所有元素，包括多层嵌套的元素。深拷贝出来的对象是一个全新的对象，不再与原来的对象有任何关联。</strong></p>
-<p>所以改变原有被复制对象不会对已经复制出来的新对象产生影响。</p>
-<p>只有一种形式，copy模块中的deepcopy函数</p>
-<p><strong>对于可变对象的深浅拷贝</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">l=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>, <span class="number">5</span>]]</span><br><span class="line"></span><br><span class="line">l1=l <span class="comment">#赋值</span></span><br><span class="line">l2=copy.copy(l) <span class="comment">#浅拷贝</span></span><br><span class="line">l3=copy.deepcopy(l) <span class="comment">#深拷贝</span></span><br><span class="line">l.append(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">print(l)  </span><br><span class="line">print(l1)</span><br><span class="line">print(l2)</span><br><span class="line">print(l3)</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, [4, 5], 6]     #l添加一个元素6</span><br><span class="line">[1, 2, 3, [4, 5], 6]     #l1跟着添加一个元素6</span><br><span class="line">[1, 2, 3, [4, 5]]        #l2保持不变</span><br><span class="line">[1, 2, 3, [4, 5]]        #l3保持不变</span><br></pre></td></tr></table></figure>
-<p><strong>一个链表的例子</strong></p>
-<p>此题为leetcode剑指offer中的18题：删除链表的节点</p>
-<p>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。</p>
-<p>返回删除后的链表的头节点。</p>
-<p>**注意：**此题对比原题有改动</p>
-<p><strong>示例 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: head &#x3D; [4,5,1,9], val &#x3D; 5</span><br><span class="line">输出: [4,1,9]</span><br><span class="line">解释: 给定你链表中值为 5 的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.</span><br></pre></td></tr></table></figure>
-<p>代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.next = None</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteNode</span>(<span class="params">self, head: ListNode, val: int</span>) -&gt; ListNode:</span></span><br><span class="line">        <span class="comment"># 如果头结点为空，直接返回</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        <span class="comment"># 如果头结点值等于val，直接返回head.next（题设中有注明链表中元素不重复）</span></span><br><span class="line">        <span class="keyword">if</span>  head.val == val:</span><br><span class="line">            <span class="keyword">return</span> head.next</span><br><span class="line">        <span class="comment"># 定义一个指针</span></span><br><span class="line">        cur = head</span><br><span class="line">        <span class="keyword">while</span> cur.next:</span><br><span class="line">            <span class="comment"># 关键步骤，如果next的值等于val，跳过该节点</span></span><br><span class="line">            <span class="keyword">if</span> cur.next.val == val:</span><br><span class="line">                cur.next = cur.next.next</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
-<p>这里当时不理解的主要有两个问题：</p>
-<ol>
-<li>既然cur等于head，为什么引入一个cur</li>
-<li>在更新过程中只是cur有变化，为什么最后还是返回了head呢，原链表改变了吗，cur在赋值过程中head会不会改变</li>
-</ol>
-<p>首先我们明确这里的无论是head还是cur，其指向的都是一个内存中ListNode地址，在这个地址中，包含了该ListNode的值和下一个ListNode的地址，因此这是一个可变的对象。下面我们来解释上面两个问题。</p>
-<ol>
-<li>
-<p>用cur的原因是，假如我们仍用head做搜索的话，由于后面我们在while循环中会涉及到赋值，会导致head依附的地址改变，即使我们找到了符合条件的结果，并对其进行改变，我们也无法返回head（链表只能从前往后），在整个循环中，head所代表的节点一直是没变的，是头节点，因此之后我们才能返回它</p>
-</li>
-<li>
-<p>这里其实就涉及到赋值的问题了，首先我们将cur赋值为head，由于此时两者链接同一个地址，如果此时改变cur，即对cur的值或链接进行修改，此时head也是会变得。但是我们在while循环中当if条件不为真时，我们会执行cur = cur.next ,记住next中存到是下一个节点，因此这也是一个赋值语句，将cur的地址，由指向head，变为了head.next，当继续循环时就会变成head.next.next…，因此在循环中此时cur和head已经不对应同一个地址，改变cur不会改变head的值。</p>
-<p>但当if条件触发时，注意我们的语句执行的是：cur.next = cur.next.next，假设当前cur和链表中第k个ListNode共用一个地址，这个操作修改了cur中的next属性，因为共用一个地址，相当于修改了链表中第k个ListNode的属性，对于本题，相当于将k+1个ListNode删除，这修改了整个链表。</p>
-<p>对于为什么此时head没有变仍然返回head，这样返回是否会仍然返回原来的链表？这里是因为虽然head没变，但顺着head，我们走到第k个ListNode时，其对应的next属性已经变成第k+2个ListNode了，这样原来的链表就被修改了。</p>
-</li>
-</ol>
-<p><strong>总结</strong>：对于python本身的可变对象，以及自己构建的可变对象，一定要注意深拷贝，浅拷贝和赋值的问题。链表还是需要自己实现一下，才能熟练，看似简单，其实题目里还是挺多坑的。</p>
+        <p>主要参考这篇文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28010894">正确理解Python中的 @staticmethod@classmethod方法</a>。简要说一下其中我觉得重要的部分。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m1</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        print(<span class="string">&quot;self:&quot;</span>, self)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m2</span>(<span class="params">cls, n</span>):</span></span><br><span class="line">        print(<span class="string">&quot;cls:&quot;</span>, cls)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m3</span>(<span class="params">n</span>):</span></span><br><span class="line">        print(n)</span><br></pre></td></tr></table></figure>
+<p>我在类中一共定义了3个方法，m1 是实例方法，第一个参数必须是 self（约定俗成的）。m2 是类方法，第一个参数必须是cls（同样是约定俗成），m3 是静态方法，参数根据业务需求定，可有可无。注意，这里的cls绑定的类A的对象，而self绑定的是类A创建的实例如a=A（）的对象。</p>
+<img src="/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/v2-f5960c8e540c96a30c2513655b6ae9a2_720w.jpg" class="" title="img">
+<p>对于@classmethod定义的类方法，可以直接由类名调用，而不需要一个类的实例调用。而如上定义的m1必须要有类的实例调用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(A.m1)</span><br><span class="line"><span class="comment"># A.m1在py2中显示为&lt;unbound method A.m1&gt;</span></span><br><span class="line">&lt;function A.m1 at <span class="number">0x000002BF7FF9A488</span>&gt;</span><br><span class="line"></span><br><span class="line">print(a.m1)  </span><br><span class="line">&lt;bound method A.m1 of &lt;__main__.A object at <span class="number">0x000002BF7FFA2BE0</span>&gt;&gt; <span class="comment">#bound 且已绑定实例地址</span></span><br></pre></td></tr></table></figure>
+<p>对于@classmethod来说，不管是实例还是类本身都可以调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(A.m2)</span><br><span class="line">&lt;bound method A.m2 of &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">A</span>&#x27;&gt;&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">print</span>(<span class="params">a.m2</span>)</span></span><br><span class="line"><span class="class">&lt;<span class="title">bound</span> <span class="title">method</span> <span class="title">A</span>.<span class="title">m2</span> <span class="title">of</span> &lt;<span class="title">class</span> &#x27;<span class="title">__main__</span>.<span class="title">A</span>&#x27;&gt;&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A.m2(<span class="number">1</span>) </span><br><span class="line"> <span class="comment"># 等价</span></span><br><span class="line"> a.m2(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>m2是类方法，不管是 A.m2 还是 a.m2，都是已经自动绑定了类对象A的方法，对于后者，因为python可以通过实例对象a找到它所属的类是A，找到A之后自动绑定到 cls。</p>
+<p>对于静态方法@staticmethod来说，m3是类里面的一个静态方法，跟普通函数没什么区别，与类和实例都没有所谓的绑定关系，它只不过是碰巧存在类中的一个函数而已。不论是通过类还是实例都可以引用该方法。</p>
+<p>如果在方法中不需要访问任何实例方法和属性，也不需要调用类的方法和属性，纯粹地通过传入参数并返回数据的功能性方法，那么它就适合用静态方法来定义，它节省了实例化对象的开销成本，往往这种方法放在类外面的模块层作为一个函数存在也是没问题的，而放在类中，仅为这个类服务。</p>
+<p>如果希望在方法里面调用一个类的方法或一个静态方法，那么把方法定义成类方法是合适的，因为要是定义成静态方法，那么你就要<strong>显示地</strong>引用类A，这对继承来说可不是一件好事情。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m1</span>()</span></span><br><span class="line"><span class="function">        <span class="title">pass</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    @<span class="title">staticmethod</span></span></span><br><span class="line"><span class="function">    <span class="title">def</span> <span class="title">m2</span>():</span></span><br><span class="line">        A.m1() <span class="comment"># bad</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m3</span>(<span class="params">cls</span>):</span></span><br><span class="line">        cls.m1() <span class="comment"># good</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -271,10 +205,6 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
@@ -332,7 +262,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/04/python%E7%9A%84%E8%B5%8B%E5%80%BC%E5%BC%95%E7%94%A8%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -346,18 +276,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          python中的@clasmethod和@staticmethod
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/10/03/%E5%89%91%E6%8C%87offer%E7%AC%AC%E4%BA%8C%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">剑指offer第二章</div>
+    <a href="/2020/10/04/python%E7%9A%84%E8%B5%8B%E5%80%BC%E5%BC%95%E7%94%A8%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python的赋值引用、浅拷贝和深拷贝</div>
       <i class="icon-circle-right"></i>
     </a>
   
