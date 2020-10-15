@@ -7,22 +7,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>python中的@clasmethod和@staticmethod | Stay Live</title>
+  <title>python位运算 | Stay Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要参考这篇文章正确理解Python中的 @staticmethod@classmethod方法。简要说一下其中我觉得重要的部分。">
+  <meta name="description" content="位操作是对二进制操作，在python中，对两个进行位操作，实际上是先将其转换为二进制在进行位操作。python共有以下几种位操作符： 123456x &gt;&gt; y # 返回 x 向右移 y 位得到的结果x &lt;&lt; y # 返回 x 向左移 y 位得到的结果x &amp; y # 且操作，返回结果的每一位是 x 和 y 中对应位做 and 运算的结果，只有 1 and 1 &#x3D; 1，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python中的@clasmethod和@staticmethod">
-<meta property="og:url" content="http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/index.html">
+<meta property="og:title" content="python位运算">
+<meta property="og:url" content="http://example.com/2020/10/15/python%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="Stay Live">
-<meta property="og:description" content="主要参考这篇文章正确理解Python中的 @staticmethod@classmethod方法。简要说一下其中我觉得重要的部分。">
+<meta property="og:description" content="位操作是对二进制操作，在python中，对两个进行位操作，实际上是先将其转换为二进制在进行位操作。python共有以下几种位操作符： 123456x &gt;&gt; y # 返回 x 向右移 y 位得到的结果x &lt;&lt; y # 返回 x 向左移 y 位得到的结果x &amp; y # 且操作，返回结果的每一位是 x 和 y 中对应位做 and 运算的结果，只有 1 and 1 &#x3D; 1，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/v2-f5960c8e540c96a30c2513655b6ae9a2_720w.jpg">
-<meta property="article:published_time" content="2020-10-12T13:50:27.000Z">
-<meta property="article:modified_time" content="2020-10-13T08:42:36.281Z">
+<meta property="article:published_time" content="2020-10-15T03:23:18.000Z">
+<meta property="article:modified_time" content="2020-10-15T04:02:19.794Z">
 <meta property="article:author" content="Shoudao">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/v2-f5960c8e540c96a30c2513655b6ae9a2_720w.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Stay Live" type="application/atom+xml">
   
@@ -159,41 +157,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python中的-clasmethod和-staticmethod" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-python位运算" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python中的@clasmethod和@staticmethod
+      python位运算
     </h1>
   
 
         
-        <a href="/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/" class="archive-article-date">
-  	<time datetime="2020-10-12T13:50:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-12</time>
+        <a href="/2020/10/15/python%E4%BD%8D%E8%BF%90%E7%AE%97/" class="archive-article-date">
+  	<time datetime="2020-10-15T03:23:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主要参考这篇文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28010894">正确理解Python中的 @staticmethod@classmethod方法</a>。简要说一下其中我觉得重要的部分。</p>
+        <p>位操作是对二进制操作，在python中，对两个进行位操作，实际上是先将其转换为二进制在进行位操作。python共有以下几种位操作符：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x &gt;&gt; y <span class="comment"># 返回 x 向右移 y 位得到的结果</span></span><br><span class="line">x &lt;&lt; y <span class="comment"># 返回 x 向左移 y 位得到的结果</span></span><br><span class="line">x &amp; y <span class="comment"># 且操作，返回结果的每一位是 x 和 y 中对应位做 and 运算的结果，只有 1 and 1 = 1，其他情况位0</span></span><br><span class="line">x | y <span class="comment"># 或操作，返回结果的每一位是 x 和 y 中对应位做 or 运算的结果，只有 0 or 0 = 0，其他情况位1</span></span><br><span class="line">~x <span class="comment"># 反转操作，对 x 求的每一位求补，只需记住结果是 -x - 1</span></span><br><span class="line">x ^ y <span class="comment"># 或非运算，如果 y 对应位是0，那么结果位取 x 的对应位，如果 y 对应位是1，取 x 对应位的补</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m1</span>(<span class="params">self, n</span>):</span></span><br><span class="line">        print(<span class="string">&quot;self:&quot;</span>, self)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m2</span>(<span class="params">cls, n</span>):</span></span><br><span class="line">        print(<span class="string">&quot;cls:&quot;</span>, cls)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m3</span>(<span class="params">n</span>):</span></span><br><span class="line">        print(n)</span><br></pre></td></tr></table></figure>
-<p>我在类中一共定义了3个方法，m1 是实例方法，第一个参数必须是 self（约定俗成的）。m2 是类方法，第一个参数必须是cls（同样是约定俗成），m3 是静态方法，参数根据业务需求定，可有可无。注意，这里的cls绑定的类A的对象，而self绑定的是类A创建的实例如a=A（）的对象。</p>
-<img src="/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/v2-f5960c8e540c96a30c2513655b6ae9a2_720w.jpg" class="" title="img">
-<p>对于@classmethod定义的类方法，可以直接由类名调用，而不需要一个类的实例调用。而如上定义的m1必须要有类的实例调用。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">print(A.m1)</span><br><span class="line"><span class="comment"># A.m1在py2中显示为&lt;unbound method A.m1&gt;</span></span><br><span class="line">&lt;function A.m1 at <span class="number">0x000002BF7FF9A488</span>&gt;</span><br><span class="line"></span><br><span class="line">print(a.m1)  </span><br><span class="line">&lt;bound method A.m1 of &lt;__main__.A object at <span class="number">0x000002BF7FFA2BE0</span>&gt;&gt; <span class="comment">#bound 且已绑定实例地址</span></span><br></pre></td></tr></table></figure>
-<p>对于@classmethod来说，不管是实例还是类本身都可以调用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(A.m2)</span><br><span class="line">&lt;bound method A.m2 of &lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">__main__</span>.<span class="title">A</span>&#x27;&gt;&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">print</span>(<span class="params">a.m2</span>)</span></span><br><span class="line"><span class="class">&lt;<span class="title">bound</span> <span class="title">method</span> <span class="title">A</span>.<span class="title">m2</span> <span class="title">of</span> &lt;<span class="title">class</span> &#x27;<span class="title">__main__</span>.<span class="title">A</span>&#x27;&gt;&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A.m2(<span class="number">1</span>) </span><br><span class="line"> <span class="comment"># 等价</span></span><br><span class="line"> a.m2(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>m2是类方法，不管是 A.m2 还是 a.m2，都是已经自动绑定了类对象A的方法，对于后者，因为python可以通过实例对象a找到它所属的类是A，找到A之后自动绑定到 cls。</p>
-<p>对于静态方法@staticmethod来说，m3是类里面的一个静态方法，跟普通函数没什么区别，与类和实例都没有所谓的绑定关系，它只不过是碰巧存在类中的一个函数而已。不论是通过类还是实例都可以引用该方法。</p>
-<p>如果在方法中不需要访问任何实例方法和属性，也不需要调用类的方法和属性，纯粹地通过传入参数并返回数据的功能性方法，那么它就适合用静态方法来定义，它节省了实例化对象的开销成本，往往这种方法放在类外面的模块层作为一个函数存在也是没问题的，而放在类中，仅为这个类服务。</p>
-<p>如果希望在方法里面调用一个类的方法或一个静态方法，那么把方法定义成类方法是合适的，因为要是定义成静态方法，那么你就要<strong>显示地</strong>引用类A，这对继承来说可不是一件好事情。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @staticmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m1</span>()</span></span><br><span class="line"><span class="function">        <span class="title">pass</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">    @<span class="title">staticmethod</span></span></span><br><span class="line"><span class="function">    <span class="title">def</span> <span class="title">m2</span>():</span></span><br><span class="line">        A.m1() <span class="comment"># bad</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">m3</span>(<span class="params">cls</span>):</span></span><br><span class="line">        cls.m1() <span class="comment"># good</span></span><br></pre></td></tr></table></figure>
+<h3 id="位操作详解"><a href="#位操作详解" class="headerlink" title="位操作详解"></a>位操作详解</h3><h4 id="左移和右移操作"><a href="#左移和右移操作" class="headerlink" title="左移和右移操作"></a>左移和右移操作</h4><p>左移和右移是将整数对应的二进制整体向左或向右移动若干位填充0。比如1111向右移动一位变成了0111，向左移动一位变成了11110。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0b1111</span> &gt;&gt; <span class="number">1</span> = <span class="number">0b111</span> = <span class="number">7</span></span><br><span class="line"><span class="number">0b1010</span> &lt;&lt; <span class="number">2</span> = <span class="number">0b101000</span> = <span class="number">40</span></span><br><span class="line"><span class="number">0b111111</span> &gt;&gt; <span class="number">3</span> = <span class="number">0b111</span> = <span class="number">7</span></span><br><span class="line"><span class="number">0b1</span> &lt;&lt; <span class="number">4</span> = <span class="number">0b10000</span> = <span class="number">16</span></span><br></pre></td></tr></table></figure>
+<p>向右移1位可以看成除以2，向左移一位可以看成乘以2。移动n位可以看成乘以或者除以2的n次方。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8 &gt;&gt; 2 &lt;=&gt; 8 / 2 / 2 &lt;=&gt; 0b1000 &gt;&gt; 2 = 0b10 = 2</span><br><span class="line">8 &lt;&lt; 2 &lt;=&gt; 8 * 2 * 2 &lt;=&gt; 0b1000 &lt;&lt; 2 = 0b100000 = 32 </span><br></pre></td></tr></table></figure>
+<h4 id="且操作-amp"><a href="#且操作-amp" class="headerlink" title="且操作&amp;"></a>且操作&amp;</h4><p>对于单个位的且操作</p>
+<p>1 &amp; 1 = 1</p>
+<p>1 &amp; 0 = 0 &amp; 1 = 0 &amp; 0 = 0</p>
+<p>两个数字的且操作就是对每一位进行且操作取结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0b1</span> &amp; <span class="number">0b0</span> = <span class="number">0</span></span><br><span class="line"><span class="number">0b1111</span> &amp; <span class="number">0b1010</span> = <span class="number">0b1010</span> = <span class="number">10</span></span><br><span class="line"><span class="number">0b1010</span> &amp; <span class="number">0b1100</span> = <span class="number">0b1000</span> = <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<h4 id="或操作"><a href="#或操作" class="headerlink" title="或操作|"></a>或操作|</h4><p>对于单个位的或操作</p>
+<p>1 | 0 = 0 | 1 = 1 | 1 = 1</p>
+<p>0 | 0 = 0</p>
+<p>两个数字的或操作就是对每一位进行或操作取结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0b1</span> | <span class="number">0b0</span> = <span class="number">0b1</span> =<span class="number">1</span></span><br><span class="line"><span class="number">0b1000</span> | <span class="number">0b0111</span> = <span class="number">0b1111</span> = <span class="number">15</span></span><br><span class="line"><span class="number">0b1010</span> | <span class="number">0b1100</span> = <span class="number">0b1110</span> = <span class="number">14</span></span><br></pre></td></tr></table></figure>
+<h4 id="反转操作"><a href="#反转操作" class="headerlink" title="反转操作"></a>反转操作</h4><p>python的反转操作只接受一个参数n，n必须是整数，效果是对n的内部表示的每一位求补，运算结果为-n-1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~8 &#x3D; -9</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>首先搞清楚原码、反码和补码：</p>
+<p>原码表示：用符号位和数值表示带符号数，正数的符号位用“0”表示，负数的符号位用“1”表示，数值部分用二进制形式表示。</p>
+<p>反码：正数的反码与原码相同，负数的反码为对该数的原码除符号位外各位取反。</p>
+<p>补码：正数的补码与原码相同，负数的补码为对该数的原码除符号位外各位取反，然后在最后一位加1。</p>
+<p>正零和负零的补码相同，[+0]补=[-0]补=0000 0000</p>
+<p>如：-9，求补码过程如下</p>
+<p>先求其原码：1000 0000 0000 1001</p>
+<p>再取其反码：1111 1111 1111 0110</p>
+<p>反码加一得补码：1111 1111 1111 0111</p>
+<p>所以1111 1111 1111 0111 即为-9的补码</p>
+</li>
+</ol>
+<ol>
+<li>反转运算是各位直接取反，结果即为取反结果对应的结果x的补码，反转操作的结果也就是x。例如：~8，运算过程如下，8的二进制表示是0000 0000 0000 1000，取反为1111 1111 1111 0111，而1111 1111 1111 0111就是-9的补码，所以~8的结果就是-9。</li>
+</ol>
+<ol>
+<li><p>再举个负数的例子：</p>
+<p>求~-2：我们可以先求出-2的补码，在计算机中，负数以原码的补码形式表达，-2的原码为1000 0000 0000 0010，取反加一得1111 1111 1111 1110，现在对-2的补码取反得0000 0000 0000 0001，而0000 0000 0000 0001即为1的补码，因为正数的补码与原码相同。</p>
+</li>
+</ol>
+<h4 id="或非操作"><a href="#或非操作" class="headerlink" title="或非操作"></a>或非操作</h4><p>对于 x ^ y，如果y的位是0，那么取x的原始值，如果y的位是1，那么取x此位的补，例如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0b1111</span> ^ <span class="number">0b0101</span> = <span class="number">0b1010</span></span><br><span class="line"><span class="number">0b1111</span> ^ <span class="number">0b1</span> = <span class="number">0b1110</span> <span class="comment"># 自动填0</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -263,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/12/python%E4%B8%AD%E7%9A%84-clasmethod%E5%92%8C-staticmethod/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/15/python%E4%BD%8D%E8%BF%90%E7%AE%97/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -277,18 +302,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/10/13/%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          两两交换链表中的节点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/10/04/python%E7%9A%84%E8%B5%8B%E5%80%BC%E5%BC%95%E7%94%A8%E3%80%81%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python的赋值引用、浅拷贝和深拷贝</div>
+    <a href="/2020/10/13/%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">两两交换链表中的节点</div>
       <i class="icon-circle-right"></i>
     </a>
   
