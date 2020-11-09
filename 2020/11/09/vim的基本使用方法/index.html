@@ -7,19 +7,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>python中local、global和nonlocal变量 | Stay Live</title>
+  <title>vim的基本使用方法 | Stay Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="两个关键词都用于允许在一个局部作用域中使用外层的变量，但不同的是：  global表示将变量声明为全局变量，当我们在某个含有多层嵌套的函数中声明global时，其总是在最外层寻找global，即main函数？（理解上的），如果最外层没有定义，而在本层嵌套函数前的嵌套函数定义了，直接调用global声明会报错，说明变量未被定义。 nonlocal表示声明变量为当前嵌套作用域的外层函数的局部变量，且该">
+  <meta name="description" content="上海财经大学本科15级，复旦大学硕士19级">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python中local、global和nonlocal变量">
-<meta property="og:url" content="http://example.com/2020/11/09/python%E4%B8%ADlocal%E3%80%81global%E5%92%8Cnonlocal%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:title" content="vim的基本使用方法">
+<meta property="og:url" content="http://example.com/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Stay Live">
-<meta property="og:description" content="两个关键词都用于允许在一个局部作用域中使用外层的变量，但不同的是：  global表示将变量声明为全局变量，当我们在某个含有多层嵌套的函数中声明global时，其总是在最外层寻找global，即main函数？（理解上的），如果最外层没有定义，而在本层嵌套函数前的嵌套函数定义了，直接调用global声明会报错，说明变量未被定义。 nonlocal表示声明变量为当前嵌套作用域的外层函数的局部变量，且该">
+<meta property="og:description" content="上海财经大学本科15级，复旦大学硕士19级">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-08T16:26:42.000Z">
-<meta property="article:modified_time" content="2020-11-09T05:04:55.096Z">
+<meta property="article:published_time" content="2020-11-09T05:05:29.000Z">
+<meta property="article:modified_time" content="2020-11-09T05:05:29.348Z">
 <meta property="article:author" content="Shoudao">
-<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Stay Live" type="application/atom+xml">
@@ -157,76 +156,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python中local、global和nonlocal变量" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-vim的基本使用方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      python中local、global和nonlocal变量
+      vim的基本使用方法
     </h1>
   
 
         
-        <a href="/2020/11/09/python%E4%B8%ADlocal%E3%80%81global%E5%92%8Cnonlocal%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-11-08T16:26:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-09</time>
+        <a href="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-11-09T05:05:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>两个关键词都用于允许在一个局部作用域中使用外层的变量，但不同的是：</p>
-<ul>
-<li>global表示将变量声明为全局变量，当我们在某个含有多层嵌套的函数中声明global时，其总是在最外层寻找global，即main函数？（理解上的），如果最外层没有定义，而在本层嵌套函数前的嵌套函数定义了，直接调用global声明会报错，说明变量未被定义。</li>
-<li>nonlocal表示声明变量为当前嵌套作用域的外层函数的局部变量，且该局部变量不能为全局变量</li>
-</ul>
-<p>python默认引用变量的顺序如下：</p>
-<p>1.当前作用域的局部变量</p>
-<p>2.外层作用域变量</p>
-<p>3.当前模块中的全局变量</p>
-<p>4.python内置变量</p>
-<a id="more"></a>
-<p>下面将用几个例子说明。</p>
-<p>1.在内部函数中，如果不需要修改外层变量，可直接引用外层变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">    print(a) <span class="comment"># 在函数内部找不到对 a 的定义，则去外层查询。输出1。</span></span><br><span class="line">fun()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
-<p>2.在内部函数中，定义与外部变量相同的变量，会调用当前局部变量，而与外层变量无关。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">    a = <span class="number">2</span> <span class="comment"># 声明了一个局部变量，与外面等于1的那个a没有关系了</span></span><br><span class="line">    print(a) </span><br><span class="line">fun()</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-<p>3.在内部函数中，修改同名全局变量之前调用变量名称，则会引发Unbound-LocalError</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">    print(a) <span class="comment"># 先引用</span></span><br><span class="line">    a = <span class="number">2</span> <span class="comment"># 再修改</span></span><br><span class="line">fun()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">---------------------------------------------------------------------------</span><br><span class="line">UnboundLocalError                         Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-6-ed7f1cf7073f&gt; in &lt;module&gt;</span><br><span class="line">      3     print(a) # 先引用</span><br><span class="line">      4     a &#x3D; 2 # 再修改</span><br><span class="line">----&gt; 5 fun()</span><br><span class="line"></span><br><span class="line">&lt;ipython-input-6-ed7f1cf7073f&gt; in fun()</span><br><span class="line">      1 a &#x3D; 1</span><br><span class="line">      2 def fun():</span><br><span class="line">----&gt; 3     print(a) # 先引用</span><br><span class="line">      4     a &#x3D; 2 # 再修改</span><br><span class="line">      5 fun()</span><br><span class="line"></span><br><span class="line">UnboundLocalError: local variable &#39;a&#39; referenced before assignment</span><br></pre></td></tr></table></figure>
-<p>本以为报错会出现赋值语句，但在print时就出现了报错。这是因为python在检查fun函数中语句时，发现了赋值语句，于是认为a是一个当前作用域的局部变量，只从局部作用域中查找，但是当我们调用print时，a还未被定义，于是出现了未被定义的错误。</p>
-<p>注意，这里不行是因为a使不可变变量，如果a为可变变量，可以进行对可变变量元素的修改，如下个例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">b = [<span class="number">1</span>]</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">    print(b) <span class="comment"># 先引用</span></span><br><span class="line">    b.append(<span class="number">1</span>) <span class="comment"># 再修改</span></span><br><span class="line">fun()</span><br><span class="line">print(b)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[1]</span><br><span class="line">[1, 1]</span><br></pre></td></tr></table></figure>
-<p>这里是用到可变变量的性质。</p>
-<p>4.要想强制在函数内部修改全局变量，可以使用global关键字，上面那个报错的例子，这样修改就可运行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">    <span class="keyword">global</span> a <span class="comment"># a为全局变量</span></span><br><span class="line">    print(a) <span class="comment"># 输出1</span></span><br><span class="line">    a = <span class="number">2</span> <span class="comment"># 改变的是全局变量，因此出了这个局部作用域，仍然有效</span></span><br><span class="line">fun()</span><br><span class="line">print(a) <span class="comment"># 输出2</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<p>global的声明允许我们在内层函数中，先调用再赋值。</p>
-<p>5.这里的global不能换位nonlocal，否则就会出现以下错误</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">    <span class="keyword">nonlocal</span> a <span class="comment"># a为上一层变量</span></span><br><span class="line">    print(a) </span><br><span class="line">    a = <span class="number">2</span> </span><br><span class="line">fun()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SyntaxError: no binding for nonlocal &#39;a&#39; found</span><br></pre></td></tr></table></figure>
-<p>这是因为nonlocal声明只能绑定上层嵌套函数的变量，而不能绑定全局变量，当a定义在上层函数中时，nonlocal声明才能有效。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer_fun</span>():</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">        <span class="keyword">nonlocal</span>  a <span class="comment"># a为外层变量</span></span><br><span class="line">        print(a) <span class="comment"># 输出1</span></span><br><span class="line">        a = <span class="number">2</span></span><br><span class="line">    fun()</span><br><span class="line">    print(a) <span class="comment">#输出2</span></span><br><span class="line">outer_fun()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<p>注意在这里nonlocal换位global也会报错</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer_fun</span>():</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">        <span class="keyword">global</span>  a </span><br><span class="line">        print(a) </span><br><span class="line">        a = <span class="number">2</span></span><br><span class="line">    fun()</span><br><span class="line">    print(a) </span><br><span class="line">outer_fun()</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">---------------------------------------------------------------------------</span><br><span class="line">NameError                                 Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input-2-7bd023bd0015&gt; in &lt;module&gt;</span><br><span class="line">      7     fun()</span><br><span class="line">      8     print(a) #输出2</span><br><span class="line">----&gt; 9 outer_fun()</span><br><span class="line"></span><br><span class="line">&lt;ipython-input-2-7bd023bd0015&gt; in outer_fun()</span><br><span class="line">      5         print(a) # 输出1</span><br><span class="line">      6         a &#x3D; 2</span><br><span class="line">----&gt; 7     fun()</span><br><span class="line">      8     print(a) #输出2</span><br><span class="line">      9 outer_fun()</span><br><span class="line"></span><br><span class="line">&lt;ipython-input-2-7bd023bd0015&gt; in fun()</span><br><span class="line">      3     def fun():</span><br><span class="line">      4         global  a # a为外层变量</span><br><span class="line">----&gt; 5         print(a) # 输出1</span><br><span class="line">      6         a &#x3D; 2</span><br><span class="line">      7     fun()</span><br><span class="line"></span><br><span class="line">NameError: name &#39;a&#39; is not defined</span><br></pre></td></tr></table></figure>
-<p>这里很多人可能会奇怪，fun的外层不是已经定义过a=1了吗，为什么会说a没定义呢？其实这就是我们之前提到的特性，global绑定的是全局main中的定义，而不是前一个作用域中的定义，由于在这里全局没有定义，因此出现错误，下一个例子能够很好的说明这个问题。</p>
-<p>6.下面这个例子中，我们即在main中定义了全部，又在之后嵌套了两层函数，在最里层函数中声明global，可以看到，外层嵌套也声明这个变量。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outer_fun</span>():</span></span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fun</span>():</span></span><br><span class="line">        <span class="keyword">global</span>  a <span class="comment"># a为外层变量</span></span><br><span class="line">        </span><br><span class="line">        print(a) <span class="comment"># 输出1</span></span><br><span class="line">        a = <span class="number">2</span></span><br><span class="line">        </span><br><span class="line">    fun()</span><br><span class="line">    print(a) <span class="comment">#输出2</span></span><br><span class="line">outer_fun()</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
-<p>可以看到，当我们最里层绑定global时，print时，调用的是main中的a=0，而不是外层嵌套的a=1。事实上，a=1这个语句和main以及最里层的a没有任何关系，可以看到，我们调用fun修改a=2后，最外层main中的a变为了2，但对outer_fun中定义的a=1没有任何影响。</p>
-<p>写在最后：</p>
-<p>写这篇文章的目的是在<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/">leetcode 538</a>题上碰到了一些困难，当时看了一个题解用了nonlocal语句，想到之前看过nonlocal和global一些的关系，想试试能不能换位global，发现不行，会报没有defined的错，于是想研究一下这两个语句到底有什么联系，具体代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">convertBST</span>(<span class="params">self, root: TreeNode</span>) -&gt; TreeNode:</span></span><br><span class="line">        tmp = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">    </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">recur</span>(<span class="params">root</span>):</span></span><br><span class="line">            <span class="keyword">nonlocal</span> tmp</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">            recur(root.right)</span><br><span class="line">            root.val += tmp</span><br><span class="line">            tmp = root.val</span><br><span class="line">            recur(root.left)</span><br><span class="line">        recur(root)</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
-<p>可以看到这里不能换位global的原因是tmp只是上层函数定义的，换位global后访问不到，而nonlocal可以改变recur外的tmp=0，适用于此题。要换位global必须要在class外定义，但此时会导致，测试完这一题，上一题修改后的tmp会用于新的题目，心累，因此这种嵌套函数的不用global，还是用nonlocal较好。</p>
-<p>其中nonlocal这个声明和闭包有点关系，具体关于闭包和nonlocal的关系可看<strong>流畅的python</strong>第七章。</p>
-
+        
       
 
       
@@ -234,17 +184,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -295,7 +234,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/09/python%E4%B8%ADlocal%E3%80%81global%E5%92%8Cnonlocal%E5%8F%98%E9%87%8F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,18 +248,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          vim的基本使用方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/10/15/python%E4%BD%8D%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python位运算</div>
+    <a href="/2020/11/09/python%E4%B8%ADlocal%E3%80%81global%E5%92%8Cnonlocal%E5%8F%98%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python中local、global和nonlocal变量</div>
       <i class="icon-circle-right"></i>
     </a>
   
