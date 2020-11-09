@@ -17,7 +17,7 @@
 <meta property="og:description" content="两个关键词都用于允许在一个局部作用域中使用外层的变量，但不同的是：  global表示将变量声明为全局变量，当我们在某个含有多层嵌套的函数中声明global时，其总是在最外层寻找global，即main函数？（理解上的），如果最外层没有定义，而在本层嵌套函数前的嵌套函数定义了，直接调用global声明会报错，说明变量未被定义。 nonlocal表示声明变量为当前嵌套作用域的外层函数的局部变量，且该">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-08T16:26:42.000Z">
-<meta property="article:modified_time" content="2020-11-09T03:30:20.127Z">
+<meta property="article:modified_time" content="2020-11-09T03:31:37.918Z">
 <meta property="article:author" content="Shoudao">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -183,20 +183,10 @@
 <li>nonlocal表示声明变量为当前嵌套作用域的外层函数的局部变量，且该局部变量不能为全局变量</li>
 </ul>
 <p>python默认引用变量的顺序如下：</p>
-<ol>
-<li>
-<p>当前作用域的局部变量</p>
-</li>
-<li>
-<p>外层作用域变量</p>
-</li>
-<li>
-<p>当前模块中的全局变量</p>
-</li>
-<li>
-<p>python内置变量</p>
-</li>
-</ol>
+<p>1.当前作用域的局部变量</p>
+<p>2.外层作用域变量</p>
+<p>3.当前模块中的全局变量</p>
+<p>4.python内置变量</p>
 <a id="more"></a>
 <p>下面将用几个例子说明。</p>
 <p>1.在内部函数中，如果不需要修改外层变量，可直接引用外层变量。</p>
