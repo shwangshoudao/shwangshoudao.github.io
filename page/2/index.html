@@ -181,8 +181,7 @@
 <p>给定一个<strong>无重复元素</strong>的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
 <p>candidates 中的数字可以无限制重复被选取。</p>
 <p>说明：</p>
-<p>所有数字（包括 target）都是正整数。<br />
-解集不能包含重复的组合。</p>
+<p>所有数字（包括 target）都是正整数。<br>解集不能包含重复的组合。 </p>
 <p><strong>示例 1：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：candidates &#x3D; [2,3,6,7], target &#x3D; 7,</span><br><span class="line">所求解集为：</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p><strong>示例2</strong></p>
@@ -202,11 +201,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
         		</li>
       		
 		</ul>
@@ -286,11 +285,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
         		</li>
       		
 		</ul>
@@ -350,8 +349,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h3>
-<p>leetcode第五题：</p>
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>leetcode第五题：</p>
 <p>给定一个字符串 <code>s</code>，找到 <code>s</code> 中最长的回文子串。你可以假设 <code>s</code> 的最大长度为 1000。</p>
 <p><strong>示例1</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;babad&quot;</span><br><span class="line">输出: &quot;bab&quot;</span><br><span class="line">注意: &quot;aba&quot; 也是一个有效答案。</span><br></pre></td></tr></table></figure>
@@ -372,11 +370,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
         		</li>
       		
 		</ul>
@@ -436,8 +434,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="引言"><a class="markdownIt-Anchor" href="#引言"></a> 引言</h3>
-<p>最短路问题一直是算法中的的一个重要问题，恐怕没有一本算法书不会介绍这个问题。这个问题及其变体在计算机网络中有着重要的应用。对于单起点最短路问题，比较经典的算法有Dijkstra’s Algorithm和Bellman-Ford 算法，前者是一个贪心算法，后者是一个动态规划算法。考虑一个图<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mo>=</mo><mo stretchy="false">(</mo><mi>V</mi><mo separator="true">,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G=(V,E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span> , 其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>V</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mi>n</mi><mo separator="true">,</mo><mi mathvariant="normal">∣</mi><mi>E</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">|V|=n,|E|=m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>。两个算法的一些对比如下表所示。</p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>最短路问题一直是算法中的的一个重要问题，恐怕没有一本算法书不会介绍这个问题。这个问题及其变体在计算机网络中有着重要的应用。对于单起点最短路问题，比较经典的算法有Dijkstra’s Algorithm和Bellman-Ford 算法，前者是一个贪心算法，后者是一个动态规划算法。考虑一个图$G=(V,E)$ , 其中$|V|=n,|E|=m$。两个算法的一些对比如下表所示。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -459,7 +457,8 @@
 </tr>
 </tbody>
 </table>
-<p>有了以上的信息，对于以上多起点的问题，可以考虑在每个节点运行一次上述算法，时间复杂度变为原来的n倍。对于Dijkstra’s Algorithm ，其时间复杂度此时为O（mnlogn)，但无法解决带有负权重的图。对于Bellman-Ford Algorithm，其时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(mn^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 。考虑到我们的图一般没有孤立的点，此时m&gt;n。一个好的算法设计者拿到一个算法时，总是要想到，我们能做的更好吗？ 答案是可以的。有一个既可以处理带有负权重边的图，又可以不像这样简单的跑n次Bellman-Ford Algorithm带来那么高的时间复杂度的算法。下面我们介绍Floyd-Warshall 算法，该算法时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
+</div>
+<p>有了以上的信息，对于以上多起点的问题，可以考虑在每个节点运行一次上述算法，时间复杂度变为原来的n倍。对于Dijkstra’s Algorithm ，其时间复杂度此时为O（mnlogn)，但无法解决带有负权重的图。对于Bellman-Ford Algorithm，其时间复杂度为$O(mn^2)$ 。考虑到我们的图一般没有孤立的点，此时m&gt;n。一个好的算法设计者拿到一个算法时，总是要想到，我们能做的更好吗？ 答案是可以的。有一个既可以处理带有负权重边的图，又可以不像这样简单的跑n次Bellman-Ford Algorithm带来那么高的时间复杂度的算法。下面我们介绍Floyd-Warshall 算法，该算法时间复杂度为$O(n^3)$.</p>
         
           <a class="article-more-a" href="/2020/09/16/%E5%A4%9A%E8%B5%B7%E7%82%B9%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/#more">more >></a>
         
@@ -602,7 +601,7 @@
       
         <p>官方文档在这：<a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/collections.html">collections</a>. 这个模块实现了特定目标的容器，以提供标准内建容器dict，list，set和tuple的替代选择。其包含的类型如下图所示：</p>
 <img src="/2020/09/10/%E6%B5%81%E7%95%85%E7%9A%84python%E7%AC%94%E8%AE%B0%EF%BC%9Acollections%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/image-20200910194352794.png" class="" title="image-20200910194352794">
-<p>有很多东西我用不到（也看不懂 😞)，因此这里只介绍namedtuple，counter和deque三个类。</p>
+<p>有很多东西我用不到（也看不懂 :disappointed:)，因此这里只介绍namedtuple，counter和deque三个类。</p>
         
           <a class="article-more-a" href="/2020/09/10/%E6%B5%81%E7%95%85%E7%9A%84python%E7%AC%94%E8%AE%B0%EF%BC%9Acollections%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/#more">more >></a>
         
@@ -678,7 +677,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>疫情原因，在家呆了小半年，五月份能返校后又来学校呆了四个月，转眼就到了九月，研究生第一年就这样过去了。时间过得可真快啊，不由得想起了大一时候常听得一句话：时间有个加速度。现在得每一年相当于人生的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> ,这里的n代表着你的岁数，随着年龄的增大，自然就会变得越来越短。</p>
+        <p>疫情原因，在家呆了小半年，五月份能返校后又来学校呆了四个月，转眼就到了九月，研究生第一年就这样过去了。时间过得可真快啊，不由得想起了大一时候常听得一句话：时间有个加速度。现在得每一年相当于人生的$\frac{1}{n}$ ,这里的n代表着你的岁数，随着年龄的增大，自然就会变得越来越短。</p>
         
           <a class="article-more-a" href="/2020/09/10/%E5%86%99%E5%9C%A8%E5%BC%80%E5%A4%B4/#more">more >></a>
         
@@ -850,6 +849,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">leetcode</a>
               </li>
              
@@ -858,15 +861,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">剑指offer</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">剑指offer</a>
               </li>
              
               <li class="article-tag-list-item">
