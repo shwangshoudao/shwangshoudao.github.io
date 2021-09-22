@@ -9,19 +9,19 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>设计模式-策略模式 | Stay Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="策略模式 这是我在新电脑上转移成功博客后的第一篇文章，是Head First 设计模式的第一章，之后会陆续把此书读完，有时间就会写博客上传。  一个鸭子类引出的问题 有一个公司做了一个鸭子游戏，游戏中有很多不同的种类鸭子对象，由于鸭子有很多共性，做了一个抽象父类Duck实现一些共性的方法, 如下图所示:  如上图所示，所有鸭子都有quack()和swim()方法, 因此都交由超类实现，这体现OO">
+  <meta name="description" content="策略模式 这是我在新电脑上转移成功博客后的第一篇文章，是Head First 设计模式的第一章，之后会陆续把此书读完，有时间就会写博客上传。  一个鸭子类引出的问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式-策略模式">
 <meta property="og:url" content="http://example.com/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Stay Live">
-<meta property="og:description" content="策略模式 这是我在新电脑上转移成功博客后的第一篇文章，是Head First 设计模式的第一章，之后会陆续把此书读完，有时间就会写博客上传。  一个鸭子类引出的问题 有一个公司做了一个鸭子游戏，游戏中有很多不同的种类鸭子对象，由于鸭子有很多共性，做了一个抽象父类Duck实现一些共性的方法, 如下图所示:  如上图所示，所有鸭子都有quack()和swim()方法, 因此都交由超类实现，这体现OO">
+<meta property="og:description" content="策略模式 这是我在新电脑上转移成功博客后的第一篇文章，是Head First 设计模式的第一章，之后会陆续把此书读完，有时间就会写博客上传。  一个鸭子类引出的问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-20210919161549956-2279180.png">
 <meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-20210919171628867.png">
 <meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-20210919172155965.png">
 <meta property="og:image" content="http://example.com/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-20210919172436085.png">
 <meta property="article:published_time" content="2021-09-19T07:55:19.000Z">
-<meta property="article:modified_time" content="2021-09-22T02:54:16.173Z">
+<meta property="article:modified_time" content="2021-09-22T02:57:05.048Z">
 <meta property="article:author" content="Shoudao">
 <meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
@@ -185,6 +185,7 @@
         <h1 id="策略模式"><a class="markdownIt-Anchor" href="#策略模式"></a> 策略模式</h1>
 <p>这是我在新电脑上转移成功博客后的第一篇文章，是Head First 设计模式的第一章，之后会陆续把此书读完，有时间就会写博客上传。</p>
 <h2 id="一个鸭子类引出的问题"><a class="markdownIt-Anchor" href="#一个鸭子类引出的问题"></a> 一个鸭子类引出的问题</h2>
+<a id="more"></a>
 <p>有一个公司做了一个鸭子游戏，游戏中有很多不同的种类鸭子对象，由于鸭子有很多共性，做了一个抽象父类<code>Duck</code>实现一些共性的方法, 如下图所示:</p>
 <img src="/2021/09/19/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-20210919161549956-2279180.png" class="" title="image-20210919161549956">
 <p>如上图所示，所有鸭子都有<code>quack()</code>和<code>swim()</code>方法, 因此都交由超类实现，这体现OO编程中继承的可复用的特点。对于每个鸭子独有的<code>display()</code>方法则写成抽象方法，交由具体的实现类实现。</p>
@@ -459,15 +460,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
