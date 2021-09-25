@@ -191,45 +191,59 @@
 <p>1.Vim很多linux系统都预装</p>
 <p>2.Vim轻量级且执行快，里面的功能和快捷键强大，当一名熟练的 vi 用户在编辑文件时，他或她的手从不需要移开键盘，同时vim也可以作为多种语言的编辑器，支持补全等操作，十分方便。</p>
 <a id="more"></a>
-<h4 id="启动和退出vim"><a href="#启动和退出vim" class="headerlink" title="启动和退出vim"></a>启动和退出vim</h4><p>对于启动vim，只需要在终端中输入以下命令：</p>
+<h4 id="启动和退出vim"><a class="markdownIt-Anchor" href="#启动和退出vim"></a> 启动和退出vim</h4>
+<p>对于启动vim，只需要在终端中输入以下命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim</span><br></pre></td></tr></table></figure>
 <p>此时vim启动，对于vim来说，有两个模式，一个是命令模式，另一个是编辑模式，当我们在命令模式时输入i即可进入编辑模式，此时和正常文档一样可以编辑，按esc键可以退出编辑模式，回到命令模式。</p>
 <p>在命令模式中我们才可以退出vim，编辑模式中不可，这是初学者要注意的地方（我一开始就是不清楚被这个搞得很烦）。在命令模式中，输入以下命令可退出vim：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:q</span><br></pre></td></tr></table></figure>
 <p>前面的冒号是命令的一部分，如果我们对文件进行了修改，但未保存，给此命令最后加一个感叹号，即可确认退出vim。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">：q!</span><br></pre></td></tr></table></figure>
-<h4 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h4><p>给vim传递一个不存在的文件名，我们即可新建一个文件，如果给vim传递一个已有的文件名，即对此文件进行修改，下面我们创建一个新的文件：</p>
+<h4 id="编辑模式"><a class="markdownIt-Anchor" href="#编辑模式"></a> 编辑模式</h4>
+<p>给vim传递一个不存在的文件名，我们即可新建一个文件，如果给vim传递一个已有的文件名，即对此文件进行修改，下面我们创建一个新的文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[me@linuxbox ~]$ rm -f foo.txt</span><br><span class="line">[me@linuxbox ~]$ vim foo.txt</span><br></pre></td></tr></table></figure>
 <p>如果正常，我们会得到一个这样的屏幕</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109135245813.png" class="" title="image-20201109135245813">
 <p>每行开头的~表示那一行有一个空文件。</p>
 <p>此时我们处于命令模式，不要胡乱输入我们需要的文本，因为未进入编辑模式，此时键盘几乎每个输入都是命令，如果直接输入文本，会使vim很混乱。</p>
-<h5 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h5><p>为了对文件进行编辑，我们需要在命令模式中键入i进行编辑模式。</p>
+<h5 id="插入模式"><a class="markdownIt-Anchor" href="#插入模式"></a> 插入模式</h5>
+<p>为了对文件进行编辑，我们需要在命令模式中键入i进行编辑模式。</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109135924269.png" class="" title="image-20201109135924269">
 <p>此时在屏幕能看到如上信息。</p>
 <p>现在即可输入文本，在光标位置即可输入我们想要的文本。要退出插入（编辑）模式回到命令模式，按下esc键即可。</p>
 <p>对于之前的修改，要进行保存需要在命令模式中键入以下命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w</span><br></pre></td></tr></table></figure>
-<h4 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h4><p>在命令模式中，我们可以用以下命令进行光标移动，注意之后的方法都区分大小写</p>
+<h4 id="移动光标"><a class="markdownIt-Anchor" href="#移动光标"></a> 移动光标</h4>
+<p>在命令模式中，我们可以用以下命令进行光标移动，注意之后的方法都区分大小写</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109140701099.png" class="" title="image-20201109140701099">
-<h4 id="基本编辑"><a href="#基本编辑" class="headerlink" title="基本编辑"></a>基本编辑</h4><p>vim可以通过命令模式进行剪切，移动和粘贴文本，也可以提供撤销功能，命令模式中，按住u即可撤销最后一次修改。</p>
-<h5 id="追加文本"><a href="#追加文本" class="headerlink" title="追加文本"></a>追加文本</h5><p>我们进入vim编辑模式中，假设我们有以下foo.txt文件，文件内容如下：</p>
+<h4 id="基本编辑"><a class="markdownIt-Anchor" href="#基本编辑"></a> 基本编辑</h4>
+<p>vim可以通过命令模式进行剪切，移动和粘贴文本，也可以提供撤销功能，命令模式中，按住u即可撤销最后一次修改。</p>
+<h5 id="追加文本"><a class="markdownIt-Anchor" href="#追加文本"></a> 追加文本</h5>
+<p>我们进入vim编辑模式中，假设我们有以下foo.txt文件，文件内容如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The quick brown fox jumped over the lazy dog.</span><br></pre></td></tr></table></figure>
 <p>如果我们想要在这个句子的末尾添加一些文本，我们会发现 i 命令不能完成任务，因为我们 不能把光标移到行尾。vi 提供了追加文本的命令，明智地命名为 “a”。如果我们把光标移动到 行尾，输入”a”, 光标就会越过行尾，同时 vi 会进入插入模式。这让我们能添加文本到行末：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The quick brown fox jumped over the lazy dog. It was cool.</span><br></pre></td></tr></table></figure>
-<p>vim中将光标移动到行首和行尾的快捷键分别是”0”（不能是数字键盘的）和”A”。</p>
-<h5 id="打开一行"><a href="#打开一行" class="headerlink" title="打开一行"></a>打开一行</h5><p>我们可以在vim中输入以下命令，向前或向后插入一行。</p>
+<p>vim中将光标移动到行首和行尾的快捷键分别是&quot;0&quot;（不能是数字键盘的）和&quot;A&quot;。</p>
+<h5 id="打开一行"><a class="markdownIt-Anchor" href="#打开一行"></a> 打开一行</h5>
+<p>我们可以在vim中输入以下命令，向前或向后插入一行。</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109141915372.png" class="" title="image-20201109141915372">
-<h5 id="删除文本"><a href="#删除文本" class="headerlink" title="删除文本"></a>删除文本</h5><p>vim提供以下在命令模式中删除文本的命令：</p>
+<h5 id="删除文本"><a class="markdownIt-Anchor" href="#删除文本"></a> 删除文本</h5>
+<p>vim提供以下在命令模式中删除文本的命令：</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109142216331.png" class="" title="image-20201109142216331">
-<h5 id="剪切，复制和粘贴文本"><a href="#剪切，复制和粘贴文本" class="headerlink" title="剪切，复制和粘贴文本"></a>剪切，复制和粘贴文本</h5><p>vim中粘贴快捷键为p，“p”命令为把剪切板中的文件粘贴到光标之后，”P”命令把文件粘贴到光标之前。剪切命令即是之前的删除命令。</p>
+<h5 id="剪切复制和粘贴文本"><a class="markdownIt-Anchor" href="#剪切复制和粘贴文本"></a> 剪切，复制和粘贴文本</h5>
+<p>vim中粘贴快捷键为p，“p”命令为把剪切板中的文件粘贴到光标之后，&quot;P&quot;命令把文件粘贴到光标之前。剪切命令即是之前的删除命令。</p>
 <p>下面我们看一下vim中的复制命令：</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109142603377.png" class="" title="image-20201109142603377">
-<h5 id="连接行"><a href="#连接行" class="headerlink" title="连接行"></a>连接行</h5><p>vim中连接行使用“J”，将下一行的内容复制到当前行。</p>
-<h4 id="查找与替换"><a href="#查找与替换" class="headerlink" title="查找与替换"></a>查找与替换</h4><p>vim可以在一行进行搜索，也可以在全局进行搜索和替换。</p>
-<h5 id="查找一行"><a href="#查找一行" class="headerlink" title="查找一行"></a>查找一行</h5><p>f 命令能搜索一特定行，并将光标移动到下一个匹配的字符上。例如，命令 fa 会把光标定位到 同一行中下一个出现的 “a” 字符上。在进行了一次行内搜索后，输入分号能重复这次搜索。</p>
-<h5 id="查找整个文件"><a href="#查找整个文件" class="headerlink" title="查找整个文件"></a>查找整个文件</h5><p>移动光标到下一个出现的单词或短语上，使用 / 命令。这个命令和 less 程序一样。当你输入/命令后，一个 “/” 字符会出现在屏幕底部。接下来，输入要查找的单词或 短语，按下回车。光标就会移动到下一个包含所查找字符串的位置。通过 n 命令来重复先前的查找。</p>
-<h5 id="全局查找和替代"><a href="#全局查找和替代" class="headerlink" title="全局查找和替代"></a>全局查找和替代</h5><p>vi 使用 ex 命令来执行查找和替代操作（vi 中叫做“替换”）。将整个文件中的单词“Line”更改 为“line”，输入以下命令：</p>
+<h5 id="连接行"><a class="markdownIt-Anchor" href="#连接行"></a> 连接行</h5>
+<p>vim中连接行使用“J”，将下一行的内容复制到当前行。</p>
+<h4 id="查找与替换"><a class="markdownIt-Anchor" href="#查找与替换"></a> 查找与替换</h4>
+<p>vim可以在一行进行搜索，也可以在全局进行搜索和替换。</p>
+<h5 id="查找一行"><a class="markdownIt-Anchor" href="#查找一行"></a> 查找一行</h5>
+<p>f 命令能搜索一特定行，并将光标移动到下一个匹配的字符上。例如，命令 fa 会把光标定位到 同一行中下一个出现的 “a” 字符上。在进行了一次行内搜索后，输入分号能重复这次搜索。</p>
+<h5 id="查找整个文件"><a class="markdownIt-Anchor" href="#查找整个文件"></a> 查找整个文件</h5>
+<p>移动光标到下一个出现的单词或短语上，使用 / 命令。这个命令和 less 程序一样。当你输入/命令后，一个 “/” 字符会出现在屏幕底部。接下来，输入要查找的单词或 短语，按下回车。光标就会移动到下一个包含所查找字符串的位置。通过 n 命令来重复先前的查找。</p>
+<h5 id="全局查找和替代"><a class="markdownIt-Anchor" href="#全局查找和替代"></a> 全局查找和替代</h5>
+<p>vi 使用 ex 命令来执行查找和替代操作（vi 中叫做“替换”）。将整个文件中的单词“Line”更改 为“line”，输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s&#x2F;Line&#x2F;line&#x2F;g</span><br></pre></td></tr></table></figure>
 <p>这行命令可以分解为几部分，每部分定义如下：</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109143452929.png" class="" title="image-20201109143452929">
@@ -239,9 +253,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace with Line (y&#x2F;n&#x2F;a&#x2F;q&#x2F;l&#x2F;^E&#x2F;^Y)?</span><br></pre></td></tr></table></figure>
 <p>选择的含义如下：</p>
 <img src="/2020/11/09/vim%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20201109143647528.png" class="" title="image-20201109143647528">
-<h5 id="编辑多个文件"><a href="#编辑多个文件" class="headerlink" title="编辑多个文件"></a>编辑多个文件</h5><p>vim支持同时打开多个文件，这时我们可以跨文件操作，如复制粘贴，vim打开多个文件很简单，如下：</p>
+<h5 id="编辑多个文件"><a class="markdownIt-Anchor" href="#编辑多个文件"></a> 编辑多个文件</h5>
+<p>vim支持同时打开多个文件，这时我们可以跨文件操作，如复制粘贴，vim打开多个文件很简单，如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim file1 file2....</span><br></pre></td></tr></table></figure>
-<h5 id="文件之间切换"><a href="#文件之间切换" class="headerlink" title="文件之间切换"></a>文件之间切换</h5><p>一个文件切换到下一个文件，回到之前的文件分别用这两个命令：</p>
+<h5 id="文件之间切换"><a class="markdownIt-Anchor" href="#文件之间切换"></a> 文件之间切换</h5>
+<p>一个文件切换到下一个文件，回到之前的文件分别用这两个命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">:n</span><br><span class="line">:N</span><br></pre></td></tr></table></figure>
 <p>当我们从一个文件移到另一个文件时，如果当前文件没有保存修改，vi 会阻止我们切换文 件，这是 vi 强制执行的政策。在命令之后添加感叹号，可以强迫 vi 放弃修改而转换文件。</p>
 <p>如果我们想看到现在在编辑的文件列表，可以输入以下命令：</p>
@@ -251,11 +267,14 @@
 <p>在我们的当前的编辑会话里也能添加别的文件。ex 命令:e (编辑 (edit) 的简写) 紧跟要打开的 文件名将会打开另外一个文件。</p>
 <p>我们可以这样在已编辑的文件中打开一个新的文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:e shoudao.txt</span><br></pre></td></tr></table></figure>
-<h5 id="跨文件复制粘贴"><a href="#跨文件复制粘贴" class="headerlink" title="跨文件复制粘贴"></a>跨文件复制粘贴</h5><p>和之前没有区别，只需要在复制时将当前文件切换到需要粘贴的文件即可。</p>
-<h5 id="插入整个文件到另一个文件"><a href="#插入整个文件到另一个文件" class="headerlink" title="插入整个文件到另一个文件"></a>插入整个文件到另一个文件</h5><p>这里使用:r命令，在当前光标前输入以下命令：</p>
+<h5 id="跨文件复制粘贴"><a class="markdownIt-Anchor" href="#跨文件复制粘贴"></a> 跨文件复制粘贴</h5>
+<p>和之前没有区别，只需要在复制时将当前文件切换到需要粘贴的文件即可。</p>
+<h5 id="插入整个文件到另一个文件"><a class="markdownIt-Anchor" href="#插入整个文件到另一个文件"></a> 插入整个文件到另一个文件</h5>
+<p>这里使用:r命令，在当前光标前输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:r foo.txt</span><br></pre></td></tr></table></figure>
 <p>就可以将foo.txt中的文件插入当前光标前。</p>
-<h4 id="保存工作"><a href="#保存工作" class="headerlink" title="保存工作"></a>保存工作</h4><p>之前提到了:w命令可以保存工作，也可以通过:wq保存文件并退出。</p>
+<h4 id="保存工作"><a class="markdownIt-Anchor" href="#保存工作"></a> 保存工作</h4>
+<p>之前提到了:w命令可以保存工作，也可以通过:wq保存文件并退出。</p>
 <p>:w命令也可以指定文件名，这个操作就如Save as命令，如果我们正在编辑foo.txt，输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w foo1.txt</span><br></pre></td></tr></table></figure>
 <p>我们就将当前文件存了一个副本，注意此时继续编辑仍是在foo.txt文件。</p>
